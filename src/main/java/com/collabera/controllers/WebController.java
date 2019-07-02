@@ -8,6 +8,7 @@ public class WebController {
 	
 	@RequestMapping("/")
 	public String getHome() {
+		System.out.println("hi!!");
 		return "index.html";
 	}
 
