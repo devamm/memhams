@@ -12,7 +12,7 @@ import com.collabera.models.*;
 @Controller
 public class MessageController {
 
-	@MessageMapping("/auction")
+	@MessageMapping("/live")
 	@SendTo("/topic/messages")
 	public OutputMessage send(Message message) throws Exception {
 	    String time = new SimpleDateFormat("HH:mm").format(new Date());
