@@ -1,1 +1,1 @@
-web: webpack && java $JAVA_OPTS -jar target/*.jar --p $PORT -Dspring.profiles.active=dev
+web: webpack && java $JAVA_OPTS -jar target/*.jar --p $PORT -Dspring.profiles.active=prod
