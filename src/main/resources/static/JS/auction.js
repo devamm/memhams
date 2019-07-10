@@ -85,15 +85,10 @@ export default Auction
 
 
 const connect = (cb) => {
-	//console.log('called connect')
 	socket = SockJS('/live');
-	//console.log('created socket');
 	console.log(socket);
 	stompClient = Stomp.over(socket);  
-	//console.log('connecting')
 	stompClient.connect({}, function(frame) {
-		//setConnected(true);
-		//console.log('Connected: ' + frame);
 		stompClient.subscribe('/topic/messages', function(message) {
 			cb(JSON.parse(message.body));
 		});
