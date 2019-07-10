@@ -22,8 +22,8 @@ module.exports = {
     extensions: ['*', '.js', '.jsx']
   },
   output: {
-    path: path.join(__dirname, '/src/main/resources/static/build'),
+    path: path.join(__dirname, '/src/main/resources/static'),
     filename: 'bundle.js',
-    publicPath: "/build/"
+    publicPath: "/"
   }
 };
