@@ -23,6 +23,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '/src/main/resources/static/build'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: "build/bundle.js"
   }
 };

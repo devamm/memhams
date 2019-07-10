@@ -86,7 +86,7 @@ export default Auction
 
 const connect = (cb) => {
 	//console.log('called connect')
-	socket = SockJS('http://localhost:8080/live');
+	socket = SockJS('/live');
 	//console.log('created socket');
 	console.log(socket);
 	stompClient = Stomp.over(socket);  
