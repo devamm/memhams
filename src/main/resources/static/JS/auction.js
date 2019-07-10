@@ -7,14 +7,76 @@ let stompClient;
 class Auction extends React.Component {
 	constructor(props){
 		super(props);
+
+		this.state = {
+		
+			from: "",
+			text: "",
+			connected: false,
+			messages: []
+			
+		}
+
+		this.connectToAuction = this.connectToAuction.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+		this.getMessage = this.getMessage.bind(this);
+		this.sendMessage = this.sendMessage.bind(this);
+	}
+
+	connectToAuction(e){
+		e.preventDefault();
+		connect(this.getMessage);
+		this.setState({connected: true})
+	}
+
+	handleChange(e){
+		this.setState({[e.target.name]: e.target.value})
+	}
+	getMessage(msg){
+		let messages = this.state.messages;
+		messages.push(msg);
+		this.setState(messages);
+	}
+
+	sendMessage(e){
+		e.preventDefault();
+		pushMessage(this.state.from, this.state.text);
 	}
 
 	render(){
+		//console.log(this.state.messages);
 		return(
 			<div className="auction-page">
 				<h1>Auction Page</h1>
-				{connect()}
+				<form>
+					<label for="from">Name</label>
+					<input type="text" name="from" value={this.state.from} onChange={this.handleChange} disabled={this.state.connected} />
+					<button disabled={this.state.connected} onClick={this.connectToAuction}>Connect</button>
+				</form>
+				{this.state.connected == true ? (
+					<div className="live">
+						<div className="send">
+							<form onSubmit={this.sendMessage}>
+								<label for="text">Message</label>
+								<input type="text" name="text" value={this.state.text} onChange={this.handleChange}/>
+								<input type="submit"/>
+							</form>
+						</div>
+						<br/>
+						<div className="bids">
+							<ul style={{listStyle: 'none'}}>
+								{this.state.messages.map(msg => {
+									return (
+										<li>{`${msg.from}: ${msg.text}`}</li>
+									)
+								})}
+							</ul>
+						</div>
+					</div>
+					
+				) : ''}
 			</div>
+			
 		)
 	}
 }
@@ -22,21 +84,18 @@ class Auction extends React.Component {
 export default Auction
 
 
-
-
-
-const connect = () => {
-	console.log('called connect')
+const connect = (cb) => {
+	//console.log('called connect')
 	socket = SockJS('http://localhost:8080/live');
-	console.log('created socket');
+	//console.log('created socket');
 	console.log(socket);
 	stompClient = Stomp.over(socket);  
-	console.log('connecting')
+	//console.log('connecting')
 	stompClient.connect({}, function(frame) {
 		//setConnected(true);
-		console.log('Connected: ' + frame);
-		stompClient.subscribe('/topic/messages', function(messageOutput) {
-			console.log(JSON.parse(messageOutput.body));
+		//console.log('Connected: ' + frame);
+		stompClient.subscribe('/topic/messages', function(message) {
+			cb(JSON.parse(message.body));
 		});
 	});
 }
@@ -49,10 +108,9 @@ const disconnect = () => {
 	console.log("Disconnected");
 }
 
-const sendMessage =  () => {
-	var from = document.getElementById('from').value;
-	var text = document.getElementById('text').value;
-	stompClient.send("/app/auction", {}, 
+const pushMessage =  (from, text) => {
+	
+	stompClient.send("/app/live", {}, 
 	  JSON.stringify({'from':from, 'text':text}));
 }
 
