@@ -16,9 +16,9 @@ const Header = (props) => {
                     <h1>Memhams</h1>
                 </div>
                 <div className="header-links">
-                    <a href="" className="nav-login active">Auction</a>
+                    <a href="/auction" className="nav-login active">Auction</a>
                     <a href="" className="nav-login active">Results</a>
-                    <a href="" className="nav-login active">Listings</a>
+                    <a href="/listings" className="nav-login active">Listings</a>
                     <a hreg="" className="nav-login active">About</a>
                 </div>
            </div>
