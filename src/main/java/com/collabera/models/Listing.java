@@ -23,15 +23,19 @@ public class Listing {
 	@Column(name="description")
 	private String desc;
 	
+	@Column(name="imgurl")
+	private String img;
+	
 	public Listing() {
 		
 	}
 	
-	public Listing(String name, int price, String desc) {
+	public Listing(String name, int price, String desc, String img) {
 	
 		this.name = name;
 		this.price = price;
 		this.desc = desc;
+		this.img = img;
 	}
 
 	public int getId() {
@@ -66,6 +70,13 @@ public class Listing {
 		this.desc = desc;
 	}
 	
+	public String getImg() {
+		return this.img;
+	}
+	
+	public void setImg(String img) {
+		this.img = img;
+	}
 	
 	
 }
