@@ -4,8 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="listings")
 public class Listing {
 	
 	@Id
@@ -18,15 +20,15 @@ public class Listing {
 	@Column(name="price")
 	private int price;
 	
-	@Column(name="desc")
+	@Column(name="description")
 	private String desc;
 	
 	public Listing() {
 		
 	}
 	
-	public Listing(int id, String name, int price, String desc) {
-		this.id = id;
+	public Listing(String name, int price, String desc) {
+	
 		this.name = name;
 		this.price = price;
 		this.desc = desc;

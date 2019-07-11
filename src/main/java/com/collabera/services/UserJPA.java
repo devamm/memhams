@@ -15,6 +15,10 @@ public interface UserJPA extends JpaRepository<Users, Integer> {
 	
 	public Users findById(int id);
 	
+	public <T extends Users> T save(T entity);
+	
+	void delete(Users U);
+	
 	public Users findByUsername(String username);
 
 }

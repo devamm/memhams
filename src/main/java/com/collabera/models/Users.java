@@ -4,8 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
+
 
 @Entity
+@Table(name="users")
 public class Users {
 	
 	@Id
@@ -25,8 +29,7 @@ public class Users {
 		
 	}
 	
-	public Users(int id,String name, String pass, boolean admin) {
-		this.id = id;
+	public Users(String name, String pass, boolean admin) {
 		this.username = name;
 		this.password = pass;
 		this.isAdmin = admin;
@@ -56,12 +59,12 @@ public class Users {
 		this.password = password;
 	}
 	
-	public boolean getRole() {
+	public boolean getisAdmin() {
 		return this.isAdmin;
 		
 	}
 	
-	public void setRole(boolean admin) {
+	public void setisAdmin(boolean admin) {
 		this.isAdmin = admin;
 	}
 	
