@@ -26,6 +26,9 @@ public class Listing {
 	@Column(name="imgurl")
 	private String img;
 	
+	@Column(name="sold")
+	private boolean sold;
+	
 	public Listing() {
 		
 	}
@@ -36,6 +39,7 @@ public class Listing {
 		this.price = price;
 		this.desc = desc;
 		this.img = img;
+		this.sold = false;
 	}
 
 	public int getId() {
@@ -78,6 +82,13 @@ public class Listing {
 		this.img = img;
 	}
 	
+	public boolean getSold() {
+		return this.sold;
+	}
+	
+	public void setSold(boolean sold) {
+		this.sold = sold;
+	}
 	
 }
 	
