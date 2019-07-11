@@ -1,0 +1,43 @@
+.header{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    height: 10em;
+    -webkit-box-shadow: 0 3px 6px -4px grey;
+    -moz-box-shadow: 0 3px 6px -4px grey;
+         box-shadow: 0 3px 6px -4px grey;
+}
+
+h1 {
+    font-size: 3em;
+    margin: 0;
+    margin-top: 0.3em;
+}
+
+.container {
+    width: 80%;
+
+}
+
+.header-middle {
+    text-align: center;
+}
+
+.header-top{
+    margin-top: 1em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-login{
+    color: #8A8A87;
+}
+
+.active{
+    font-size: 1.2em;
+    margin-right: 1em;
+}
+
+.active:hover{
+    color: #8331A7;
+}

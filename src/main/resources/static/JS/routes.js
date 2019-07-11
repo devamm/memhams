@@ -2,6 +2,7 @@ import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import App from './app.js'
 import Auction from './auction.js';
+import Header from './header.js';
 
 class Routes extends React.Component{
 	constructor(props){
@@ -10,10 +11,13 @@ class Routes extends React.Component{
 
 	render(){
 		return (
-			<Switch>
-				<Route exact path="/auction" component={Auction} />
-				<Route exact path="/" component ={App} /> 
-			</Switch>
+			<div>
+				<Header/>
+				<Switch>
+					<Route exact path="/auction" component={Auction} />
+					<Route exact path="/" component ={App} /> 
+				</Switch>
+			</div>
 		)
 	}
 }

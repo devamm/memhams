@@ -1,0 +1,14 @@
+body {
+    background-color: #F7F7F7;
+    font-family: 'Marcellus', serif;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+}
+
+a, button, input, label {
+    font-family: 'Source Sans Pro', sans-serif;
+    text-decoration: none;
+}
