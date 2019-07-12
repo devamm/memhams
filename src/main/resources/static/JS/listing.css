@@ -8,3 +8,16 @@
     
 }
 
+.listing-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.listing-header button {
+    margin: 1.4em 0;
+}
+
+.success {
+    padding: 0;
+}
+

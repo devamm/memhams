@@ -1,4 +1,4 @@
-.listing-modal{
+.modal{
     width: 55em;
     height: 30em;
     background-color: white;
@@ -12,11 +12,11 @@
     align-items: center;
 }
 
-.listing-modal p {
+.modal p {
     margin: 0;
 }
 
-.edit-inner{
+.modal-inner{
     width: 90%;
     height: 80%;
     background-color: white;
@@ -25,12 +25,12 @@
     flex-direction: column;
 }
 
-.listing-modal button {
+.modal button {
     padding: 14px 20px;
     margin-left: 2em;
 }
 
-.listing-modal input[type=text], select {
+.modal input[type=text], select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -40,7 +40,7 @@
     box-sizing: border-box;
   }
   
-.listing-modal input[type=submit] {
+.modal input[type=submit] {
    
     background-color: #4CAF50;
     color: white;
@@ -51,6 +51,6 @@
     cursor: pointer;
   }
   
-.listing-modal input[type=submit]:hover {
+.modal input[type=submit]:hover {
     background-color: #45a049;
   }

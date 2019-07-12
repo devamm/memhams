@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import './editListing.css';
+import './modal.css';
 
 class EditListing extends React.Component {
     constructor(props){
@@ -81,7 +81,7 @@ class EditListing extends React.Component {
             });
 
             this.props.toggleModal(e);
-            //console.log(this.props);
+            
             this.props.edited();
             this.props.history.push(`/listing${this.props.listing.id}`);
            } catch(err){
@@ -92,8 +92,8 @@ class EditListing extends React.Component {
 
     render(){
         return (
-            <div className="listing-modal">
-               <div className="edit-inner">
+            <div className="modal">
+               <div className="modal-inner">
                <form onSubmit={this.editListing}>
                     <label for="name">Name</label>
                     <p className="error" style={{display: `${this.state.empError == true? "": 'none'}`}}>Input can't be empty</p>
