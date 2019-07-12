@@ -46,35 +46,37 @@ class Auction extends React.Component {
 	render(){
 		//console.log(this.state.messages);
 		return(
-			<div className="auction-page">
-				<h1>Auction Page</h1>
-				<form>
-					<label for="from">Name</label>
-					<input type="text" name="from" value={this.state.from} onChange={this.handleChange} disabled={this.state.connected} />
-					<button disabled={this.state.connected} onClick={this.connectToAuction}>Connect</button>
-				</form>
-				{this.state.connected == true ? (
-					<div className="live">
-						<div className="send">
-							<form onSubmit={this.sendMessage}>
-								<label for="text">Message</label>
-								<input type="text" name="text" value={this.state.text} onChange={this.handleChange}/>
-								<input type="submit"/>
-							</form>
+			<div className="auction-page" style={{display: "flex", justifyContent: 'center'}}>
+				<div className="container">
+					<h1>Auction Page</h1>
+					<form>
+						<label for="from">Name</label>
+						<input type="text" name="from" value={this.state.from} onChange={this.handleChange} disabled={this.state.connected} />
+						<button disabled={this.state.connected} onClick={this.connectToAuction}>Connect</button>
+					</form>
+					{this.state.connected == true ? (
+						<div className="live">
+							<div className="send">
+								<form onSubmit={this.sendMessage}>
+									<label for="text">Message</label>
+									<input type="text" name="text" value={this.state.text} onChange={this.handleChange}/>
+									<input type="submit"/>
+								</form>
+							</div>
+							<br/>
+							<div className="bids">
+								<ul style={{listStyle: 'none'}}>
+									{this.state.messages.map(msg => {
+										return (
+											<li>{`${msg.from}: ${msg.text}`}</li>
+										)
+									})}
+								</ul>
+							</div>
 						</div>
-						<br/>
-						<div className="bids">
-							<ul style={{listStyle: 'none'}}>
-								{this.state.messages.map(msg => {
-									return (
-										<li>{`${msg.from}: ${msg.text}`}</li>
-									)
-								})}
-							</ul>
-						</div>
-					</div>
-					
-				) : ''}
+						
+					) : ''}
+				</div>
 			</div>
 			
 		)
