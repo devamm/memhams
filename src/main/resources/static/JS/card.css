@@ -35,3 +35,7 @@
 .text {
     font-family: 'Mukta', sans-serif;
 }
+
+.error{
+    color: red;
+}

@@ -15,11 +15,17 @@ class SingleListing extends React.Component {
 
         this.deleteListing = this.deleteListing.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.edited = this.edited.bind(this)
     }
 
     toggleModal(e){
         e.preventDefault();
         this.setState({modalOpen: !this.state.modalOpen});
+    }
+
+    async edited(){
+        const {data} = await axios.get(`/api/listings/${this.props.match.params.id}`);
+        this.setState({listing: data, loaded: true});
     }
 
     async deleteListing(e){
@@ -33,20 +39,20 @@ class SingleListing extends React.Component {
     }
 
     async componentDidMount(){
-        console.log(this.props)
+       
         const {data} = await axios.get(`/api/listings/${this.props.match.params.id}`);
         this.setState({listing: data, loaded: true});
     }
 
     render(){
         const listing = this.state.listing;
-        console.log(this.state.modalOpen);
+    
         return (
             <div className="listing-page">
                {this.state.loaded == true ? (
                     <div className="container" >
                     {this.state.modalOpen == true ? (
-                          <EditListing toggleModal={this.toggleModal} />
+                          <EditListing toggleModal={this.toggleModal} listing={listing} history={this.props.history} edited={this.edited} />
                       ) : ""}
                       <div className='listing'>
                       
@@ -61,7 +67,8 @@ class SingleListing extends React.Component {
                             disabled={this.state.modalOpen == true}>Edit Listing</button>
                             <br/>
                             <br/>
-                            <button className="btn default" onClick={this.deleteListing}>Delete Listing</button>
+                            <button className="btn default" onClick={this.deleteListing}
+                            disabled={this.state.modalOpen == true}>Delete Listing</button>
                         </div>
                     </div>
                     <div className="desc">
