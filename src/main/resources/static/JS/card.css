@@ -7,6 +7,11 @@
 
 }
 
+.listings-card a {
+    all: unset;
+    cursor: pointer;
+}
+
 .card-img{
     height: 67%;
     /*background: red; */
@@ -25,4 +30,8 @@
 .title {
     color: #8331A7;
     font-weight: bold;
+}
+
+.text {
+    font-family: 'Mukta', sans-serif;
 }
