@@ -5,7 +5,7 @@ const ListingCard = (props) => {
     return (
         <div className="listings-card">
             <div className="card-img">
-               
+               <img src={props.listing.img} />
             </div>
             <h4 className="title">{props.listing.name}</h4>
             <h4>18 Aug 2019</h4>

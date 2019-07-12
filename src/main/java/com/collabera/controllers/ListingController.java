@@ -42,6 +42,7 @@ public class ListingController {
 	public ResponseEntity<String> postListing(@RequestBody Listing listing){
 		if (listing.getImg().equals("default")) {
 			//set some default image url here
+			listing.setImg("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/A_blank_black_picture.jpg/1536px-A_blank_black_picture.jpg");
 		}
 		ListService.save(listing);
 		return ResponseEntity.status(HttpStatus.CREATED).body("Created");
