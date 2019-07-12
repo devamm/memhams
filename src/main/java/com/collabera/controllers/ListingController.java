@@ -68,9 +68,11 @@ public class ListingController {
 	public ResponseEntity<String> deleteListing(@PathVariable String id){
 		int listID = Integer.parseInt(id);
 		Listing list = ListService.findById(listID);
+		
 		if(list == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Not Found");
 		} else {
+			ListService.delete(list);
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Deleted");
 		}
 	}

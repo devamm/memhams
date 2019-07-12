@@ -10,10 +10,22 @@ class SingleListing extends React.Component {
             listing: {},
             loaded: false
         }
+
+        this.deleteListing = this.deleteListing.bind(this);
+    }
+
+    async deleteListing(e){
+        e.preventDefault();
+        try{
+            await axios.delete(`/api/listings/${this.state.listing.id}`);
+            this.props.history.push(`/listings`);
+        } catch(err){
+            console.log(err);
+        }
     }
 
     async componentDidMount(){
-        console.log(this.props.match)
+        console.log(this.props)
         const {data} = await axios.get(`/api/listings/${this.props.match.params.id}`);
         this.setState({listing: data, loaded: true});
     }
@@ -32,8 +44,10 @@ class SingleListing extends React.Component {
                             <h2>{listing.name}</h2>
                             <p>{`$${listing.price}`}</p>
                             <br />
-                            <button>Edit Listing</button>
-                            <button>Delete Listing</button>
+                            <button className="btn success">Edit Listing</button>
+                            <br/>
+                            <br/>
+                            <button className="btn default" onClick={this.deleteListing}>Delete Listing</button>
                         </div>
                     </div>
                     <div className="desc">

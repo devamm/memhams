@@ -13,4 +13,5 @@ public interface ListingJPA extends JpaRepository<Listing, Integer> {
 	public List<Listing> findAll();
 	
 	public Listing findById(int id);
+	
 }
