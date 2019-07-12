@@ -1,0 +1,18 @@
+.listings-card{
+    /*background: white; */
+    height: 25em;
+    width: 15em;
+    margin-right: 2em;
+    margin-bottom: 2em;
+
+}
+
+.card-img{
+    height: 67%;
+    background: red;
+}
+
+.title {
+    color: #8331A7;
+    font-weight: bold;
+}

@@ -1,11 +1,17 @@
 .header{
     background-color: white;
+    color: black;
     display: flex;
     justify-content: center;
     height: 10em;
     -webkit-box-shadow: 0 3px 6px -4px grey;
     -moz-box-shadow: 0 3px 6px -4px grey;
          box-shadow: 0 3px 6px -4px grey;
+}
+
+.header-middle a {
+    color: black;
+    font-family: 'Marcellus', serif;
 }
 
 h1 {
