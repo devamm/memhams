@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './singleListing.css';
+import EditListing from './editListing';
 
 class SingleListing extends React.Component {
     constructor(props){
@@ -8,10 +9,17 @@ class SingleListing extends React.Component {
 
         this.state = {
             listing: {},
-            loaded: false
+            loaded: false,
+            modalOpen: false
         }
 
         this.deleteListing = this.deleteListing.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
+    }
+
+    toggleModal(e){
+        e.preventDefault();
+        this.setState({modalOpen: !this.state.modalOpen});
     }
 
     async deleteListing(e){
@@ -32,11 +40,16 @@ class SingleListing extends React.Component {
 
     render(){
         const listing = this.state.listing;
+        console.log(this.state.modalOpen);
         return (
             <div className="listing-page">
                {this.state.loaded == true ? (
                     <div className="container" >
+                    {this.state.modalOpen == true ? (
+                          <EditListing toggleModal={this.toggleModal} />
+                      ) : ""}
                       <div className='listing'>
+                      
                         <div className="listing-img">
                             <img src={listing.img} />
                         </div>
@@ -44,7 +57,8 @@ class SingleListing extends React.Component {
                             <h2>{listing.name}</h2>
                             <p>{`$${listing.price}`}</p>
                             <br />
-                            <button className="btn success">Edit Listing</button>
+                            <button className="btn success" onClick={this.toggleModal}
+                            disabled={this.state.modalOpen == true}>Edit Listing</button>
                             <br/>
                             <br/>
                             <button className="btn default" onClick={this.deleteListing}>Delete Listing</button>

@@ -1,0 +1,6 @@
+.listing-modal{
+    width: 55em;
+    height: 30em;
+    background-color: blue;
+    z-index: 100;
+}
