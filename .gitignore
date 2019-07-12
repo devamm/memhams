@@ -33,4 +33,4 @@ build/
 node_modules
 
 src/main/resources/application-dev.properties
-src/main/resources/static/bundle.js
+#src/main/resources/static/bundle.js
