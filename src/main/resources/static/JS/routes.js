@@ -5,6 +5,7 @@ import Auction from './auction.js';
 import Header from './header.js';
 import Listings from './listings.js'
 import SingleListing from './singleListing.js';
+import Login from './login.js'
 
 class Routes extends React.Component{
 	constructor(props){
@@ -19,6 +20,7 @@ class Routes extends React.Component{
 					<Route exact path="/auction" component={Auction} />
 					<Route exact path="/listings" component={Listings} />
 					<Route exact path="/listing:id" component={SingleListing} />
+					<Route exact path="/login" component={Login} />
 					<Route exact path="/" component ={App} /> 
 				</Switch>
 			</div>

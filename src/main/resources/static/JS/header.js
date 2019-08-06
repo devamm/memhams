@@ -10,7 +10,7 @@ const Header = (props) => {
                 <div className="header-top">
                  
                     <a href="" className="nav-login">CREATE ACCOUNT</a>
-                    <a href="" className="nav-login" style={{marginLeft: "1em"}}>LOGIN</a>
+                    <a href="/login" className="nav-login" style={{marginLeft: "1em"}}>LOGIN</a>
                   
                 </div>
                 <div className="header-middle">
@@ -20,7 +20,7 @@ const Header = (props) => {
                     <a href="/auction" className="nav-login active">Auction</a>
                     <a href="/" className="nav-login active">Results</a>
                     <a href="/listings" className="nav-login active">Listings</a>
-                    <a hreg="/" className="nav-login active">About</a>
+                    <a href="/" className="nav-login active">About</a>
                 </div>
            </div>
         </div>
