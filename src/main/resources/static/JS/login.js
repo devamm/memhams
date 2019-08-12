@@ -1,5 +1,8 @@
 import React from 'react';
 import './login.css'
+import {auth} from './store/users';
+import {connect} from 'react-redux'
+
 class Login extends React.Component {
     constructor(props){
         super(props);
@@ -19,10 +22,10 @@ class Login extends React.Component {
 
     handleLogin(e){
         e.preventDefault();
-        console.log('called login func')
+       
         //handle login here
         if(this.state.username == 'dev' && this.state.password == 'guest'){
-            console.log('logged in!');
+            this.props.login(this.state.username, this.state.password);
         } else {
             console.log('invalid login');
         }
@@ -40,7 +43,7 @@ class Login extends React.Component {
                             </div> 
                             <div className="input-container">
                                 <label for="password">Password</label>
-                                <input type="text" name="password" value={this.state.password} onChange={this.handleChange}/ > 
+                                <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/ > 
                             </div>
                             <input type="submit"/>
                         </form>
@@ -51,5 +54,11 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+const mapDispatchToProps = dispatch => {
+    return {
+        login: (username, password) => dispatch(auth(username, password, 'login'))
+    };
+}
+
+export default connect(null, mapDispatchToProps)(Login);
 

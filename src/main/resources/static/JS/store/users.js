@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../history';
 
 // Action Types
 const GET_USER = 'GET_USER';
@@ -7,23 +8,20 @@ const REMOVE_USER = 'GET_USER';
 
 // Action Creators
 const getUser = user => ({type: GET_USER, user});
-const createUser = user => ({type: CREATE_USER, user});
 const removeUser = user => ({type: REMOVE_USER, user});
 
 //Thunk Creators
-export const fetchUser = (id) => async dispatch => {
+export const auth = (usename, password, method) => async dispatch => {
     //ajax call goes here
+    
+    //dummy data for test purposes
+    const dev = {id: 1, username: 'dev', isAdmin: true}
 
-    dispatch(getUser());
+    dispatch(getUser(dev));
+
 }
 
-export const createUserRequest = (newUser) => async dispatch => {
-    //ajax call goes here
-
-    dispatch(createUser());
-}
-
-export const userLogout = () => async dispatch => {
+export const logout = () => async dispatch => {
     //ajax call goes here
 
     dispatch(removeUser());
@@ -35,11 +33,9 @@ export default function(state = {}, action){
     switch(action.type){
         case GET_USER:
             return action.user;
-        case CREATE_USER:
-            return action.user;
         case REMOVE_USER:
             return {};
         default:
-        return state;
+            return state;
     }
 }
