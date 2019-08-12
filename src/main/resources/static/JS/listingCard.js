@@ -1,10 +1,11 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import "./card.css"
 
 const ListingCard = (props) => {
     return (
         <div className="listings-card">
-            <a href={`/listing${props.listing.id}`} >
+            <Link to={`/listing${props.listing.id}`} >
                 <div className="card-img">
                 <img src={props.listing.img} />
                 </div>
@@ -15,7 +16,7 @@ const ListingCard = (props) => {
                     <h4 style={{marginTop: 0}}>18 Aug 2019</h4>
                 </div>
 
-            </a>
+            </Link>
           
         </div>
         
