@@ -19,8 +19,13 @@ class Login extends React.Component {
 
     handleLogin(e){
         e.preventDefault();
-
+        console.log('called login func')
         //handle login here
+        if(this.state.username == 'dev' && this.state.password == 'guest'){
+            console.log('logged in!');
+        } else {
+            console.log('invalid login');
+        }
     }
 
     render(){
