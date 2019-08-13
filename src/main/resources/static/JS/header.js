@@ -5,7 +5,6 @@ import {connect} from 'react-redux'
 import {logout} from './store/users';
 
 const Header = (props) => {
-    console.log("user logged in: ", !!props.user);
     return (
         <div className="header">
         <div className="container">
@@ -19,7 +18,7 @@ const Header = (props) => {
                             <Link to="/login" className="nav-login" style={{marginLeft: "1em"}}>LOGIN</Link>
                         </div>
                     ) : (
-                        <Link to="/" className="nav-login" style={{marginLeft: "1em"}} disabled>{props.user.username}</Link>
+                        <Link to="" className="nav-login" style={{marginLeft: "1em"}}>{props.user.username}</Link>
                    )}
                   
                 </div>
