@@ -1,0 +1,23 @@
+.listings-page {
+    color: #3D3D3B;
+}
+
+
+.listings-page h1 {
+    font-family: 'Source Sans Pro', sans-serif;
+    
+}
+
+.listing-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.listing-header button {
+    margin: 1.4em 0;
+}
+
+.success {
+    padding: 0;
+}
+
