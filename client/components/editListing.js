@@ -9,8 +9,8 @@ class EditListing extends React.Component {
         this.state = {
             name: this.props.listing.name || "",
             price: this.props.listing.price || "",
-            desc: this.props.listing.desc || "",
-            img: this.props.listing.img || "",
+            description: this.props.listing.description || "",
+            imgurl: this.props.listing.imgurl || "",
             numError: false,
             empError: false,
             empError1: false
@@ -27,8 +27,8 @@ class EditListing extends React.Component {
         this.setState({
             name: this.props.listing.name,
             price: this.props.listing.price,
-            desc: this.props.listing.desc,
-            img: this.props.listing.img
+            description: this.props.listing.description,
+            imgurl: this.props.listing.imgurl
         })
         this.props.toggleModal(e);
     }
@@ -62,9 +62,9 @@ class EditListing extends React.Component {
         if(this.state.desc == ""){
             empError1 = true;
         }
-        var img = this.state.img;
-        if(img == ""){
-            img = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/A_blank_black_picture.jpg/1536px-A_blank_black_picture.jpg";
+        var imgurl = this.state.imgurl;
+        if(imgurl == ""){
+            imgurl = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/A_blank_black_picture.jpg/1536px-A_blank_black_picture.jpg";
         }
 
         if(numError == true || empError == true || empError1 == true){
@@ -74,9 +74,9 @@ class EditListing extends React.Component {
            try{
             const res = await axios.put(`/api/listings/${this.props.listing.id}`, {
                 name: this.state.name,
-                desc: this.state.desc,
+                description: this.state.description,
                 price,
-                img,
+                imgurl,
                 sold: false
             });
 
@@ -103,14 +103,14 @@ class EditListing extends React.Component {
                     <p className="error" style={{display: `${this.state.numError == true? "": 'none'}`}}>Price must be a valid number</p>
                     <input type="text" name="price" onChange={this.handleChange} value={this.state.price} />
 
-                     <label for="desc">Description</label>
+                     <label for="descriptioj">Description</label>
                      <p className="error" style={{display: `${this.state.empError1 == true? "": 'none'}`}}>Input can't be empty</p>
                      <br/>
-                    <input type="text" name="desc" onChange={this.handleChange} value={this.state.desc} />
+                    <input type="text" name="description" onChange={this.handleChange} value={this.state.description} />
 
-                    <label for="img">Image URL</label>
+                    <label for="imgurl">Image URL</label>
                      <br/>
-                    <input type="text" name="img" onChange={this.handleChange} value={this.state.img} />
+                    <input type="text" name="imgurl" onChange={this.handleChange} value={this.state.imgurl} />
 
                     
                 

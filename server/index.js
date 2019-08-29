@@ -17,6 +17,11 @@ const createApp = () => {
     app.use('/api', require('./api'));
 
     //default page & error routes
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, "..", 'public/index.html'));
+    })
+
     app.use((err, req, res, next) => {
         console.error(err);
         res.status(err.status || 500).send(err.message || 'Internal Server Error');

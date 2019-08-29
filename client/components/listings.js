@@ -25,7 +25,7 @@ class Listings extends React.Component {
 
     async reload(){
         try{
-            const {data} = await axios.get("/api/listings");
+            const {data} = await axios.get("/api/listings/");
             this.setState({listings: data});
            } catch(e){
                console.log(e);
@@ -35,7 +35,7 @@ class Listings extends React.Component {
     async componentDidMount(){
         //load listings here
        try{
-        const {data} = await axios.get("/api/listings");
+        const {data} = await axios.get("/api/listings/");
         this.setState({listings: data});
         
        } catch(e){

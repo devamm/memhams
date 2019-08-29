@@ -57,7 +57,7 @@ class SingleListing extends React.Component {
                       <div className='listing'>
                       
                         <div className="listing-img">
-                            <img src={listing.img} />
+                            <img src={listing.imgurl} />
                         </div>
                         <div className="listing-text">
                             <h2>{listing.name}</h2>
@@ -72,7 +72,7 @@ class SingleListing extends React.Component {
                         </div>
                     </div>
                     <div className="desc">
-                        <p>{listing.desc}</p>
+                        <p>{listing.description}</p>
                     </div>
                       </div>
                ) : ""}

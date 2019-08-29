@@ -4,12 +4,12 @@ import "./card.css"
 
 const ListingCard = (props) => {
     return (
+      
         <div className="listings-card">
             <Link to={`/listing/${props.listing.id}`} >
                 <div className="card-img">
-                <img src={props.listing.img} />
+                <img src={props.listing.imgurl} />
                 </div>
-               
                 <h4 className="title">{props.listing.name}</h4>
                 <div className="text">
                     <h4 style={{marginBottom: 0}}>{`$${props.listing.price}`}</h4>

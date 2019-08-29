@@ -28,6 +28,20 @@ router.post('/', async(req, res, next) => {
     }
 });
 
+router.get('/:id', async(req, res, next) => {
+    try{
+        const id = parseInt(req.params.id);
+        const listing = await Listing.findOne({where: {id}});
+        if(listing){
+            res.json(listing);
+        } else {
+            res.sendStatus(404);
+        }
+    } catch(e){
+        next(e);
+    }
+})
+
 router.put('/:id', async(req, res, next) => {
     try{
         const {name, description, price, imgurl, sold} = req.body;
