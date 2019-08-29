@@ -8,9 +8,15 @@ dotenv.config();
 const app = express();
 
 const createApp = () => {
-    //include middleware and routers here here
+    //middleware
     app.use(express.static('public'));
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
 
+    //routes
+    app.use('/api', require('./api'));
+
+    //default page & error routes
     app.use((err, req, res, next) => {
         console.error(err);
         res.status(err.status || 500).send(err.message || 'Internal Server Error');
@@ -27,7 +33,6 @@ const startListening = () => {
 }
 
 const syncDb = () => db.sync();
-
 async function startApplication(){
     await syncDb();
     await createApp();
