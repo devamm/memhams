@@ -1,20 +1,16 @@
 const Sequelize = require('sequelize');
-
+const {HOST, USER, PASS, ENV} = require('../../config.js')
 let dbConfig;
 
-if(ENV == 'prod'){
-    //configure heroku db connection here
-    console.log("connecting to Heroku db");
-}else {
-    //local db connection
-    console.log('connecting to local DB');
-    dbConfig = ['memhams', "", "", {
-        host: 'localhost',
-        port: 5432,
-        dialect: 'postgres',
-        logging: 'false'
-    }]
-}
+
+console.log('db environment:',ENV);
+dbConfig = ['memhams', USER, PASS, {
+    host: HOST,
+    port: 5432,
+    dialect: 'postgres',
+    logging: false
+}];
+
 
 const db = new Sequelize(...dbConfig);
 
