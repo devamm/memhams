@@ -83,7 +83,7 @@ class EditListing extends React.Component {
             this.props.toggleModal(e);
             
             this.props.edited();
-            this.props.history.push(`/listing${this.props.listing.id}`);
+            this.props.history.push(`/listing/${this.props.listing.id}`);
            } catch(err){
                console.log(err);
            }
